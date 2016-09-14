@@ -1,9 +1,11 @@
 #!/usr/bin/python
 import time
-import simpleusbrelay
+from simpleusbrelay import *
 
 # initialize the library with the idVendor and Product id
-relaycontroller=simpleusbrelay(idVendor=16c0, idProduct=05df)
+idVendor=int("16c0", 16)
+idProduct=int("05df", 16)
+relaycontroller=simpleusbrelay(idVendor, idProduct)
 #turn on relay 1
 relaycontroller.array_on(1)
 #turn of relay 1
