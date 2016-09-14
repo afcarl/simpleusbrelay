@@ -35,6 +35,7 @@ class simpleusbrelay(object):
 		self.idVendor = Vendor
 		self.idProduct = Product
 		self.dev = usb.core.find(idVendor=Vendor, idProduct=Product)
+		self.dev.set_configuration()
 		if self.dev is None:
 			raise ValueError('Device not found')
 	
@@ -48,7 +49,6 @@ class simpleusbrelay(object):
 				except Exception as e:
 					pass # already unregistered
 
-		self.dev.set_configuration()
 		sentmsg = "".join(chr(n) for n in msg)
 		self.dev.ctrl_transfer(0x21,0x09,0x0300,0x0000,sentmsg,1000)	
 		if reattach:
