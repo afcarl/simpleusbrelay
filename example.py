@@ -8,5 +8,6 @@ idProduct=int("05df", 16)
 relaycontroller=simpleusbrelay(idVendor, idProduct)
 #turn on relay 1
 relaycontroller.array_on(1)
+time.sleep(1)
 #turn of relay 1
 relaycontroller.array_off(1)
