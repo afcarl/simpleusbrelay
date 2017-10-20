@@ -35,6 +35,8 @@ class simpleusbrelay(object):
 		self.idVendor = Vendor
 		self.idProduct = Product
 		self.dev = usb.core.find(idVendor=Vendor, idProduct=Product)
+		if self.dev.is_kernel_driver_active(0):
+			self.dev.detach_kernel_driver(0)
 		self.dev.set_configuration()
 		if self.dev is None:
 			raise ValueError('Device not found')
